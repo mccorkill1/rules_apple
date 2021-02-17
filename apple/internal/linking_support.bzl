@@ -63,7 +63,7 @@ def _exported_symbols_list_objc_provider(files):
         link_inputs = depset(files),
     )
 
-def _register_linking_action(ctx, *, stamp, extra_linkopts = []):
+def _register_linking_action(ctx, *, extra_linkopts = [], stamp=-1):
     """Registers linking actions using the Starlark Linking API for Apple binaries.
 
     This method will add the linkopts as added on the rule descriptor, in addition to any extra
@@ -102,7 +102,7 @@ def _register_linking_action(ctx, *, stamp, extra_linkopts = []):
     return apple_common.link_multi_arch_binary(
         ctx = ctx,
         extra_linkopts = linkopts,
-        stamp = stamp,
+        # stamp = stamp,
     )
 
 linking_support = struct(
